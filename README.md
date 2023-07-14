@@ -60,6 +60,24 @@ The script can be configured by modifying the following parameters at the top of
 
 Note: The 'cars.xml' file required for the Cascade Classifier should be in the same directory as the script. 
 
+## Example
+![Diagram](road.jpg)
+Original Car-Eye-View Image
+
+
+![Diagram](edges_image.jpg)
+Canny Edge Image
+
+
+![Diagram](edges_image_masked.jpg)
+Canny Edge, masked Image
+
+
+![Diagram](resulting_image.jpg)
+Final Resulting Image
+
+
+
 ## Contribution
 
 Feel free to contribute to this project by opening issues or submitting pull requests.
