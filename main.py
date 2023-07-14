@@ -1,9 +1,5 @@
 import cv2
 import numpy as np
-#import math
-
-'''NOTE: This is a very crude ECE 196 program. Not much parameter adjusting has been done.
-        The code has been prepared to take adjustments.'''
 
 #image filtering parameters
 guassian_window = 5
@@ -22,7 +18,6 @@ line_detection_maxGap = 5
 #car detection parameters
 car_minsize = 80
 
-
 #   IMAGE FILTERING ----------------
 roadImage_original = cv2.imread('road.jpg') #read image
 roadImage_grayscale = cv2.cvtColor(roadImage_original, cv2.COLOR_BGR2GRAY) #transform to GC
@@ -38,8 +33,10 @@ roadImage_edges_masked = cv2.bitwise_and(roadImage_edges, mask) #get masked vers
 cv2.imshow('roadImage original', roadImage_original)
 cv2.waitKey(0)
 cv2.imshow('roadImage edges', roadImage_edges)
+cv2.imwrite('edges_image.jpg', roadImage_edges)
 cv2.waitKey(0)
 cv2.imshow('roadImage edges masked', roadImage_edges_masked)
+cv2.imwrite('edges_image_masked.jpg', roadImage_edges_masked)
 cv2.waitKey(0)
 
 #   LINE DETECTION ----------------
@@ -60,6 +57,7 @@ for x,y,width,height in cars:
     cv2.rectangle(roadImage_original, (x+10, y+10), (x+width-10, y+height-10), (0, 0, 255), 2) #draw rectangle around 'car'
 
 #   RESULTS ----------------
+cv2.imwrite('resulting_image.jpg', roadImage_original)
 cv2.imshow('Detected Image Overlay', roadImage_original)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
