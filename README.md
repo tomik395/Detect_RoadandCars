@@ -1,10 +1,10 @@
 # Detect Road and Cars
 
-A Python program that applies image processing techniques and object detection algorithms to detect roads and cars in an image.
+A Python program that applies image processing techniques and object detection algorithms to detect roads and cars in an image or video.
 
 ## Description
 
-This Python script uses the OpenCV library for image processing and object detection. The script follows these steps:
+This Python script uses the OpenCV library for image processing and object detection. The script follows these steps for every frame:
 
 1. Image filtering: The image is transformed to grayscale and blurred using a Gaussian window. Then, edge detection is performed using the Canny edge detection method.
 
@@ -60,7 +60,15 @@ The script can be configured by modifying the following parameters at the top of
 
 Note: The 'cars.xml' file required for the Cascade Classifier should be in the same directory as the script. 
 
-## Example
+## Some Notes for Future Additions
+
+Video support has been added recently and is still being tested. Note that due to immense processing for every frame, this program is able to crunch approximately 30 frames per second. If your video is anything above that, it's recommended to skip every Nth frame in order to downscale your video to allow for real-time processing. For example, if your video is 60FPS, it is recommended to skip every other frame since the result data loss when downscaling from a 60FPS to 30FPS video will be negligible. A future commit will automatically take care of downscaling.
+
+This program uses a static, 6-vertice trapezoid-like mask. This means that shapes outside of this mask will not be considered when it comes to road line detection (vehicular detection is unaffected). This mask addition eliminates a significant amount of false detections. In future commits, logic to dynamically shape this mask according to road turns and inclines/declines will be added.
+
+Currently, all the image processing parameters are fixed in accordance with bright, non-worn, clear road lines on fairly fark asphalt. A future commit will dynamically adapt these parameters to also conform to different, more poor road conditions.
+
+## Example of Frame-by-Frame Image Processing
 ![Diagram](road.jpg)
 Original Car-Eye-View Image
 
@@ -75,7 +83,6 @@ Canny Edge, masked Image
 
 ![Diagram](resulting_image.jpg)
 Final Resulting Image
-
 
 
 ## Contribution
