@@ -42,11 +42,11 @@ roadImage_edges_masked = cv2.bitwise_and(roadImage_edges, mask)  # get masked ve
 
 cv2.imshow('roadImage original', roadImage_original)
 cv2.waitKey(0)
-cv2.imshow('roadImage edges', roadImage_edges)
 cv2.imwrite('edges_image.jpg', roadImage_edges)
+cv2.imshow('roadImage edges', roadImage_edges)
 cv2.waitKey(0)
-cv2.imshow('roadImage edges masked', roadImage_edges_masked)
 cv2.imwrite('edges_image_masked.jpg', roadImage_edges_masked)
+cv2.imshow('roadImage edges masked', roadImage_edges_masked)
 cv2.waitKey(0)
 
 #   LINE DETECTION ----------------
