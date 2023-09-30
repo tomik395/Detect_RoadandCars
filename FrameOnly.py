@@ -6,7 +6,7 @@ guassian_window = 5
 max_slope = 0.50
 edge_low = 50
 edge_high = 150
-mask_height = 1.5
+mask_height = 1.53
 
 #line detection parameters
 line_detection_rho = 15
